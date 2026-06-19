@@ -10,7 +10,22 @@
 
 <div class="page">
   <main class="main">
+<audio id="musica-fondo" loop>
+  <source src="css/audio.mpeg" type="audio/mpeg" />
+  Tu navegador no soporta el elemento de audio.
+</audio>
 
+<script>
+  window.addEventListener('click', () => {
+    const reproductor = document.getElementById('musica-fondo');
+    // Verificamos si ya está sonando para no reiniciarla en cada clic
+    if (reproductor.paused) {
+      reproductor.play().catch(error => {
+        console.log("El navegador bloqueó el autoplay inicialmente:", error);
+      });
+    }
+  });
+</script>
 <div class="grid-section">
   <div class="gif-grid">
     

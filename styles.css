@@ -1,0 +1,139 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111;
+  color: #f0f0f0;
+  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+/* ── Contenido principal ── */
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 12px;
+}
+/* ── Grilla 2×3 + 7mo centrado ── */
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Crea las 2 columnas iguales */
+  gap: 15px;                             /* Espacio entre los bloques */
+  max-width: 900px;                      /* Ancho máximo de la grilla en la pantalla */
+  margin: 0 auto;                        /* Centra todo el contenedor en la web */
+}
+
+.gif-cell {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  
+  /* Mantiene las celdas con una proporción cuadrada perfecta (1 de ancho por 1 de alto) */
+  aspect-ratio: 1 / 1; 
+}
+
+.gif-cell:hover {
+  border-color: #555;
+}
+
+.gif-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cambialo a 'contain' si preferís que el dibujo se achique en vez de recortarse */
+  display: block;
+}
+/* Reemplazá solo este bloque al final de tu CSS */
+.gif-cell.gif-cell--centered {
+  grid-column: span 2;
+  justify-self: center;
+  width: calc(50% - 7.5px); /* Resta la mitad del gap (15px / 2) para que calce perfecto */
+  max-width: 100%;
+}
+.banner-section .gif-cell {
+  width: 1473px;
+  height: 500px;
+}
+
+
+/* ── Rectángulo vertical inferior izquierdo ── */
+.vertical-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.vertical-rect {
+  width: 200px;
+  height: 320px;
+}
+
+/* ── Modal de URL ── */
+.url-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.url-overlay.active { display: flex; }
+
+.url-box {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 24px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.url-box h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ddd;
+}
+
+.url-box input {
+  width: 100%;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 9px 12px;
+  color: #f0f0f0;
+  font-size: 14px;
+  outline: none;
+}
+
+.url-box input:focus { border-color: #555; }
+
+.url-box .btn-row {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid #333;
+  background: transparent;
+  color: #aaa;
+  transition: background 0.15s;
+}
+
+.btn:hover { background: #2a2a2a; }
+.btn.primary { background: #333; color: #eee; border-color: #444; }
+.btn.primary:hover { background: #3d3d3d; }
