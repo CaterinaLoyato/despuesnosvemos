@@ -7,20 +7,19 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
 <div class="page">
-
   <main class="main">
 
-<audio id="musica-fondo" loop>
+    <audio id="musica-fondo" loop preload="auto">
+      <source src="audio.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
 
-  <source src="css/audio.mpeg" type="audio/mpeg" />
-
-  Tu navegador no soporta el elemento de audio.
-
-</audio>
+  </main>
+</div>
 
 <script>
+  // Usamos 'pointerdown' o 'click' para asegurar la interacción del usuario
   window.addEventListener('click', () => {
     const reproductor = document.getElementById('musica-fondo');
     
@@ -33,7 +32,7 @@
           console.error("Error al intentar reproducir:", error);
         });
     }
-  });
+  }, { once: true }); // '{ once: true }' hace que el evento se ejecute solo la primera vez que haces clic
 </script>
 
     <div class="banner-section banner-top">
